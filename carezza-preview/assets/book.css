@@ -1,0 +1,61 @@
+/* Carezza Preview · visor revista premium, separado del panel administrador */
+.viewer-premium { max-width: 1190px; padding-top: 32px; }
+.viewer-premium h1 {font-size:clamp(26px,4vw,38px); letter-spacing:-.8px;}
+.viewer-premium .intro {margin-bottom:23px; font-size:14px}
+.magazine-stage {position:relative; margin:0 auto; padding:21px 24px 17px; max-width:1120px; border:1px solid #e4d9e9; border-radius:24px; background:linear-gradient(139deg,#fffaf8 0%,#f1eafa 58%,#f8eee8 100%);box-shadow:0 23px 75px #76648924, inset 0 1px 0 #fff}
+.magazine-heading {display:flex; justify-content:space-between; gap:14px; align-items:center; text-align:left; margin:0 8px 15px;}
+.magazine-edition {font-size:11px;font-weight:800;letter-spacing:1.7px;color:#77668f;}
+.magazine-hint {font-size:11px;color:#8e8096}
+.magazine-desk {width:100%;position:relative;min-height:345px;display:flex;align-items:center;justify-content:center;border-radius:19px;background:radial-gradient(circle at 50% 12%,#ffffffd0 0%,#e9e0f0ad 49%,#dccdddb5 100%);border:1px solid #e7dcec;box-shadow:inset 0 -25px 70px #bca5c821;overflow:hidden;padding:18px 8px;}
+.magazine-desk:before {content:"";position:absolute;left:12%;right:12%;bottom:9%;height:18px;border-radius:50%;filter:blur(14px);background:#3f2f5760;pointer-events:none}
+.premium-book {width:100%; height:clamp(345px,67vh,710px); position:relative;margin:auto;filter:drop-shadow(2px 13px 12px #4e3a5a40);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.premium-book .stf__parent {margin:auto!important}
+.premium-book canvas {touch-action:pan-y}
+.book-ribbon {position:absolute;z-index:2;top:15px;left:18px;color:#ab8eaf;font-family:Georgia,serif;font-size:20px;opacity:.8;pointer-events:none}
+.magazine-toolbar {display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:570px;margin:20px auto 11px}
+.pageNav {min-width:125px;border-radius:30px;box-shadow:0 4px 10px #6b57861a}
+.pageNav:not(:disabled):active {transform:translateY(1px)}
+.page-center {flex:1;min-width:120px;display:flex;flex-direction:column;gap:11px;align-items:center}
+.page-center .counter {white-space:nowrap;min-width:0;font-size:13px;color:#665875;}
+#pageSlider {appearance:none;-webkit-appearance:none;width:100%;height:5px;border-radius:99px;outline:none;background:linear-gradient(to right,#9280af var(--reading-progress,0%),#e5daed var(--reading-progress,0%));cursor:pointer}
+#pageSlider::-webkit-slider-thumb {-webkit-appearance:none;background:#74618e;width:15px;height:15px;border:3px solid #fff;border-radius:50%;box-shadow:0 1px 6px #55446b40}
+#pageSlider::-moz-range-thumb {background:#74618e;width:11px;height:11px;border:3px solid #fff;border-radius:50%}
+.magazine-actions {display:flex;justify-content:center;gap:11px;flex-wrap:wrap;margin-top:15px}
+.miniAction {border:1px solid #ded1e7;background:#fff9;color:#6f5c84;padding:10px 14px;border-radius:30px;font-size:12px;font-weight:650;cursor:pointer}
+.miniAction:hover,.miniAction:focus-visible{background:#fff;outline:2px solid #b5a7cb}
+.magazine-note {font-size:11px;color:#8d7893;margin:20px 8px 3px;letter-spacing:.2px}
+.thumbnails {display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;padding:17px;margin:22px 1px 0;max-height:305px;overflow-y:auto;border:1px solid #e3d7e6;border-radius:15px;background:#fffc}
+.thumb {display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid #e7dfea;border-radius:9px;padding:7px;background:#fff;color:#655778;cursor:pointer}
+.thumb img {width:100%;aspect-ratio:0.70;object-fit:contain;background:#fff;box-shadow:0 2px 7px #6f587c1c}
+.thumb span {font-size:11px}
+.thumb:hover,.thumb.is-current{border-color:#9075aa;box-shadow:0 0 0 2px #b5a7cb62}
+.zoom-overlay {position:fixed;z-index:200;inset:0;background:#211c29f2;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:50px 20px 16px;overflow:auto}
+.zoom-overlay img {object-fit:contain;max-width:95%;max-height:calc(100vh - 130px);width:auto;height:auto;box-shadow:0 20px 45px #0008;user-select:none;-webkit-user-drag:none;touch-action:pinch-zoom}
+.zoom-overlay p {font-size:12px;color:#f6edf7;text-align:center}
+.zoom-close {position:fixed;right:22px;top:15px;border:1px solid #fff5;border-radius:50%;background:#ffffff24;color:#fff;width:43px;height:43px;font-size:32px;line-height:1;cursor:pointer}
+body.zoom-open {overflow:hidden}
+.sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.fallback-book {height:clamp(345px,67vh,710px);max-width:520px;width:100%;padding:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 26px #4e3a5a3d;background:white}
+.fallback-book img{height:100%;width:100%;object-fit:contain;pointer-events:none}
+#viewerStage:fullscreen{max-width:none;border-radius:0;overflow:auto;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(130deg,#f1eafb,#fff7f4)}
+#viewerStage:fullscreen .magazine-desk{flex:1;min-height:0}
+#viewerStage:fullscreen .premium-book{height:min(79vh,850px)}
+#viewerStage:fullscreen .fallback-book{height:min(79vh,850px)}
+@media(max-width:760px){
+ .viewer-premium{padding:21px 10px 35px}
+ .magazine-stage{padding:13px 10px 17px;border-radius:17px}
+ .magazine-heading{margin:0 5px 12px}
+ .magazine-hint{display:none}
+ .magazine-desk{padding:12px 2px;border-radius:13px}
+ .premium-book,.fallback-book{height:clamp(325px,63svh,630px)}
+ .magazine-toolbar{gap:8px;margin-top:17px}
+ .pageNav{min-width:88px;padding:10px 9px;font-size:12px}
+ .page-center{min-width:105px}
+ .magazine-actions{gap:6px}
+ .miniAction{padding:9px 11px}
+ .magazine-note{line-height:1.5}
+}
+@media(prefers-reduced-motion:reduce) {
+ .pageNav,.thumb,.miniAction{transition:none!important}
+}
+@media print {.magazine-stage,.zoom-overlay{display:none!important}}
