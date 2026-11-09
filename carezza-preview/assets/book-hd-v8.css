@@ -1,0 +1,38 @@
+/* Carezza Preview v8: visualización de PNG originales a través de elementos HTML.
+   Conserva la nitidez de la imagen al mostrarla en pantallas Retina/alta densidad. */
+.carezza-sheet {
+  width:100%;
+  height:100%;
+  position:relative;
+  overflow:hidden;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+}
+.carezza-page-image {
+  display:block;
+  height:100%;
+  width:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  image-rendering:auto;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+  background:#fff;
+}
+.premium-book .stf__item { background:#fff; }
+.premium-book .stf__item.--left { box-shadow:inset -6px 0 14px #51406913; }
+.premium-book .stf__item.--right { box-shadow:inset 6px 0 14px #51406913; }
+.premium-book .stf__block { image-rendering:auto; }
+@media (max-width:760px) {
+  .carezza-sheet { border-radius:1px; }
+  .carezza-page-image {object-fit:contain; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .carezza-sheet {scroll-behavior:auto;}
+}
