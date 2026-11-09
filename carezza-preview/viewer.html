@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#b5a7cb">
   <title>Mi revista · Carezza Preview</title>
   <link rel="stylesheet" href="./assets/styles.css">
-  <link rel="stylesheet" href="./assets/book.css?v=3">
+  <link rel="stylesheet" href="./assets/book.css?v=4">
 </head>
 <body>
 <header class="top">
@@ -62,10 +62,17 @@
 </main>
 <div id="zoomOverlay" class="zoom-overlay hidden" role="dialog" aria-modal="true" aria-label="Ampliación de página" tabindex="-1">
   <button type="button" id="closeZoom" class="zoom-close" aria-label="Cerrar ampliación">×</button>
-  <img id="zoomImage" alt="Vista ampliada de una página protegida" draggable="false">
-  <p>Desliza con dos dedos para ampliar · Pulsa × para cerrar</p>
+  <div class="zoom-tools" aria-label="Controles para ampliar el diseño">
+    <button type="button" id="zoomOut" aria-label="Alejar">−</button>
+    <output id="zoomLevel" aria-live="polite">100 %</output>
+    <button type="button" id="zoomIn" aria-label="Acercar">+</button>
+  </div>
+  <div id="zoomScroll" class="zoom-scroll">
+    <img id="zoomImage" alt="Vista ampliada de una página protegida" draggable="false">
+  </div>
+  <p>Usa los controles + y − para revisar los detalles de impresión · Pulsa × para cerrar</p>
 </div>
 <footer class="footer">© Carezza Creaciones · Hecho con cariño para ti ♡</footer>
-<script src="./assets/viewer.js?v=3" defer></script>
+<script src="./assets/viewer.js?v=4" defer></script>
 </body>
 </html>
