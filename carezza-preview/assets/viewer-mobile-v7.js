@@ -62,9 +62,20 @@ function renderFallback() {
   desk.appendChild(img);
   updateControls();
 }
+function ensureBookContainer() {
+  let element = $('book');
+  if (element) return element;
+  element = document.createElement('div');
+  element.id = 'book';
+  element.className = 'premium-book';
+  element.setAttribute('aria-label', 'Revista digital con páginas que se pasan');
+  $('magazineDesk').insertBefore(element, $('fallbackPages'));
+  return element;
+}
+
 function useFallback() {
   fallback = true;
-  $('book').classList.add('hidden');
+  ensureBookContainer().classList.add('hidden');
   $('fallbackPages').classList.remove('hidden');
   $('magazineDesk').classList.add('simple-view');
   renderFallback();
@@ -99,6 +110,7 @@ async function initializeMagazine() {
     try { flip.destroy(); } catch (_) { /* already gone */ }
     flip = null;
   }
+  ensureBookContainer();
   fallback = false;
   thumbnailsBuilt = false;
   $('thumbnails').replaceChildren();
@@ -149,6 +161,7 @@ async function initializeMagazine() {
   } catch (error) {
     console.error('El visor de revista no pudo iniciarse', error);
     if (flip) { try { flip.destroy(); } catch (_) {} flip = null; }
+    ensureBookContainer();
     useFallback();
   }
 }
