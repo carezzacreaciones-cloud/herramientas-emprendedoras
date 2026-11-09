@@ -1,1 +1,71 @@
-<!doctype html><html lang="es"><head><meta name="referrer" content="no-referrer"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,nosnippet"><title>Revista · Carezza Preview</title><link rel="stylesheet" href="./assets/styles.css"></head><body><header class="top"><div class="topin"><div class="brand">Carezza Preview<small>CAREZZA CREACIONES</small></div><span class="small">Solo para revisión</span></div></header><main class="viewer"><span class="tag">VISTA PREVIA PERSONALIZADA</span><h1 id="title">Tu revista digital</h1><div class="intro" id="subtitle">Preparada con cariño</div><div id="locked" class="card lock hidden"><h2>Este diseño está protegido 🔐</h2><p>Ingresa la contraseña proporcionada por Carezza Creaciones.</p><form id="unlockForm"><label class="field"><span>Contraseña de acceso</span><input id="viewPassword" type="password" required autocomplete="off"></label><button id="unlockButton" class="btn primary wide">Ver mi diseño</button></form><p id="unlockStatus" class="err" role="status"></p></div><div id="viewerStage" class="viewerStage hidden"><div id="book" class="book" aria-label="Revista para hojear"><div id="left" class="leaf"></div><div id="right" class="leaf second"></div></div><div class="controls"><button id="prev" class="btn subtle">← Anterior</button><span id="counter" class="counter">1 / 1</span><button id="next" class="btn primary">Siguiente →</button></div></div><p id="status" class="warning">Cargando tu revista…</p><div class="warning">Contenido protegido con marca de agua. No incluye el PDF original ni un botón de descarga. La protección no impide capturas de pantalla.</div></main><footer class="footer">© Carezza Creaciones · Diseño sujeto a aprobación</footer><script type="module" src="./assets/viewer.js"></script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,nosnippet">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#b5a7cb">
+  <title>Mi revista · Carezza Preview</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/book.css?v=3">
+</head>
+<body>
+<header class="top">
+  <div class="topin">
+    <div class="brand">Carezza Preview<small>CAREZZA CREACIONES</small></div>
+    <span class="small">Vista exclusiva para clientes ♡</span>
+  </div>
+</header>
+<main class="viewer viewer-premium">
+  <span class="tag">TU DISEÑO, PÁGINA A PÁGINA</span>
+  <h1 id="title">Tu revista digital</h1>
+  <div class="intro" id="subtitle">Preparada con cariño</div>
+  <div id="locked" class="card lock hidden">
+    <h2>Esta revista es privada 🔐</h2>
+    <p>Ingresa la contraseña proporcionada por Carezza Creaciones.</p>
+    <form id="unlockForm">
+      <label class="field"><span>Contraseña de acceso</span><input id="viewPassword" type="password" required autocomplete="off"></label>
+      <button id="unlockButton" class="btn primary wide">Abrir mi revista</button>
+    </form>
+    <p id="unlockStatus" class="err" role="status"></p>
+  </div>
+  <div id="viewerStage" class="magazine-stage hidden">
+    <div class="magazine-heading">
+      <span class="magazine-edition">EDICIÓN PRIVADA · CAREZZA CREACIONES</span>
+      <span class="magazine-hint"><span aria-hidden="true">↗</span> Arrastra una esquina para pasar la hoja</span>
+    </div>
+    <div class="magazine-desk" id="magazineDesk">
+      <div class="book-ribbon" aria-hidden="true">♡</div>
+      <div id="book" class="premium-book" aria-label="Revista digital con páginas que se pasan"></div>
+      <div id="fallbackPages" class="fallback-book hidden" aria-label="Páginas de la revista"></div>
+    </div>
+    <div class="magazine-toolbar">
+      <button id="prev" class="btn subtle pageNav" type="button" aria-label="Página anterior">← <span>Anterior</span></button>
+      <div class="page-center">
+        <span id="counter" class="counter" aria-live="polite">1 / 1</span>
+        <label class="sr-only" for="pageSlider">Ir a página</label>
+        <input type="range" id="pageSlider" min="1" max="1" value="1" aria-label="Ir a página">
+      </div>
+      <button id="next" class="btn primary pageNav" type="button" aria-label="Página siguiente"><span>Siguiente</span> →</button>
+    </div>
+    <div class="magazine-actions">
+      <button id="thumbnailsButton" class="miniAction" type="button" aria-controls="thumbnails" aria-expanded="false">▦ <span>Ver páginas</span></button>
+      <button id="zoomButton" class="miniAction" type="button">⌕ <span>Ampliar página</span></button>
+      <button id="fullscreenButton" class="miniAction" type="button">⛶ <span>Pantalla completa</span></button>
+    </div>
+    <div id="thumbnails" class="thumbnails hidden" aria-label="Miniaturas de páginas"></div>
+    <p class="magazine-note">Vista previa con marca de agua · El PDF original no está disponible para descargar.</p>
+  </div>
+  <p id="status" class="warning" role="status">Preparando tu revista…</p>
+  <p class="warning">Este diseño es para revisión. Aunque no existe un botón de descarga, ninguna herramienta web puede impedir todas las capturas de pantalla.</p>
+</main>
+<div id="zoomOverlay" class="zoom-overlay hidden" role="dialog" aria-modal="true" aria-label="Ampliación de página" tabindex="-1">
+  <button type="button" id="closeZoom" class="zoom-close" aria-label="Cerrar ampliación">×</button>
+  <img id="zoomImage" alt="Vista ampliada de una página protegida" draggable="false">
+  <p>Desliza con dos dedos para ampliar · Pulsa × para cerrar</p>
+</div>
+<footer class="footer">© Carezza Creaciones · Hecho con cariño para ti ♡</footer>
+<script src="./assets/viewer.js?v=3" defer></script>
+</body>
+</html>
