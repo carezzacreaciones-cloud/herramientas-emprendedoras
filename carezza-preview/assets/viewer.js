@@ -248,10 +248,41 @@ $('thumbnailsButton').addEventListener('click', () => {
   $('thumbnails').classList.toggle('hidden', !opening);
   $('thumbnailsButton').setAttribute('aria-expanded', String(opening));
 });
+let zoomFactor = 1;
+let zoomBaseWidth = 0;
+function renderZoom() {
+  if (!zoomBaseWidth) return;
+  $('zoomImage').style.width = Math.round(zoomBaseWidth * zoomFactor) + 'px';
+  $('zoomLevel').textContent = Math.round(zoomFactor * 100) + ' %';
+  $('zoomOut').disabled = zoomFactor <= 1;
+  $('zoomIn').disabled = zoomFactor >= 4;
+}
+$('zoomImage').addEventListener('load', () => {
+  const image = $('zoomImage');
+  if (!image.naturalWidth || !image.naturalHeight) return;
+  const scale = Math.min(
+    (window.innerWidth - 52) / image.naturalWidth,
+    (window.innerHeight - 170) / image.naturalHeight,
+    1
+  );
+  zoomBaseWidth = image.naturalWidth * scale;
+  zoomFactor = 1;
+  renderZoom();
+});
+$('zoomIn').addEventListener('click', () => {
+  zoomFactor = Math.min(4, zoomFactor + 0.5);
+  renderZoom();
+});
+$('zoomOut').addEventListener('click', () => {
+  zoomFactor = Math.max(1, zoomFactor - 0.5);
+  renderZoom();
+});
 $('zoomButton').addEventListener('click', async () => {
   if (!pageCount) return;
   if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch (_) {} }
   lastFocus = document.activeElement;
+  zoomFactor = 1;
+  zoomBaseWidth = 0;
   $('zoomImage').src = pageUrl(activePage());
   $('zoomOverlay').classList.remove('hidden');
   document.body.classList.add('zoom-open');
@@ -261,6 +292,8 @@ function closeZoom() {
   $('zoomOverlay').classList.add('hidden');
   document.body.classList.remove('zoom-open');
   $('zoomImage').removeAttribute('src');
+  $('zoomImage').style.width = '';
+  zoomBaseWidth = 0;
   if (lastFocus && lastFocus.focus) lastFocus.focus();
 }
 $('closeZoom').addEventListener('click', closeZoom);
