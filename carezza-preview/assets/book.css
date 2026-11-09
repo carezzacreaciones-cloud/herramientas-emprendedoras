@@ -59,3 +59,13 @@ body.zoom-open {overflow:hidden}
  .pageNav,.thumb,.miniAction{transition:none!important}
 }
 @media print {.magazine-stage,.zoom-overlay{display:none!important}}
+
+/* Ajustes de ampliación a escala de pantalla y hasta 400 % */
+.zoom-overlay{padding:56px 16px 12px;display:flex;justify-content:flex-start;gap:8px;overflow:hidden}
+.zoom-scroll{flex:1;min-height:0;width:100%;overflow:auto;text-align:center;scrollbar-color:#9d8cba #2e2837}
+.zoom-scroll img{max-width:none!important;max-height:none!important;width:auto;height:auto;display:block;margin:0 auto;box-shadow:0 12px 36px #0009}
+.zoom-tools{display:flex;align-items:center;justify-content:center;gap:18px;min-height:39px;flex-shrink:0;color:#fff;z-index:2}
+.zoom-tools button{background:#fff2;color:white;border:1px solid #fff5;border-radius:50%;width:37px;height:37px;font-size:24px;cursor:pointer}
+.zoom-tools button:disabled{opacity:.35;cursor:not-allowed}
+.zoom-tools output{font-size:13px;min-width:60px;font-variant-numeric:tabular-nums}
+.zoom-overlay p{flex-shrink:0;margin:5px}
