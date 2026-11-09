@@ -85,7 +85,7 @@ function loadFlipLibrary() {
       script.src = sources[current++];
       script.async = true;
       script.referrerPolicy = 'no-referrer';
-      script.onload = () => resolve(!!(window.St && window.St.PageFlip));
+      script.onload = () => { if (window.St && window.St.PageFlip) resolve(true); else { script.remove(); trySource(); } };
       script.onerror = () => { script.remove(); trySource(); };
       document.head.appendChild(script);
     };
@@ -248,8 +248,9 @@ $('thumbnailsButton').addEventListener('click', () => {
   $('thumbnails').classList.toggle('hidden', !opening);
   $('thumbnailsButton').setAttribute('aria-expanded', String(opening));
 });
-$('zoomButton').addEventListener('click', () => {
+$('zoomButton').addEventListener('click', async () => {
   if (!pageCount) return;
+  if (document.fullscreenElement) { try { await document.exitFullscreen(); } catch (_) {} }
   lastFocus = document.activeElement;
   $('zoomImage').src = pageUrl(activePage());
   $('zoomOverlay').classList.remove('hidden');
