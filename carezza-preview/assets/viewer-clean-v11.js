@@ -51,7 +51,7 @@ function clearReader() {
 function controls() {
   if(!total)return;
   page=Math.min(total-1,Math.max(0,bookPage()));
-  const spread = flip && !fallback && flip.getOrientation()==='landscape';
+  const spread = !initializing && flip && !fallback && flip.getOrientation()==='landscape';
   const last=spread && page>0 ? Math.min(total,page+2) : page+1;
   $('counter').textContent=page===0?'Portada · 1 de '+total:
     (last>page+1?'Páginas '+(page+1)+'–'+last:'Página '+(page+1))+' de '+total;
@@ -183,7 +183,7 @@ async function initialize() {
     flip.on('init',()=>controls());
     const sheets=createSheets(book);
     // Cargar hojas iniciales antes de empezar para que no queden blancas.
-    const initial=[oldPage,oldPage+1,oldPage+2].filter(i=>i<total);
+    const initial=[oldPage,oldPage+1,...(phone?[]:[oldPage+2])].filter(i=>i<total);
     const ok=await Promise.all(initial.map(i=>ensureImage(i)));
     if(ok.includes(false)){
       fallbackView('Algunas imágenes no pudieron cargarse. Revisa la conexión y vuelve a abrir el enlace.');
@@ -256,7 +256,7 @@ async function navigate(delta){
   }finally{loadingPage=false;badge(false);}
 }
 async function jumpTo(index){
-  if(index<0||index>=total)return;
+  if(initializing||index<0||index>=total)return;
   if(fallback||!flip){page=index;fallbackRender();return;}
   badge(true,'Preparando página '+(index+1)+'…');
   try{
