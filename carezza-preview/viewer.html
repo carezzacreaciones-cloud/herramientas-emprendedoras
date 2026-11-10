@@ -6,15 +6,12 @@
   <meta name="robots" content="noindex,nofollow,nosnippet">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#b5a7cb">
-  <title>Mi revista HD · Carezza Preview</title>
+  <title>Revista digital · Carezza Preview</title>
   <meta property="og:type" content="website">
   <meta property="og:title" content="Carezza Preview · Tu revista personalizada">
   <meta property="og:description" content="Revisa tu diseño personalizado en una revista digital creada para ti.">
   <link rel="stylesheet" href="./assets/styles.css">
-  <link rel="stylesheet" href="./assets/book.css?v=4">
-  <link rel="stylesheet" href="./assets/mobile-v7.css">
-  <link rel="stylesheet" href="./assets/book-hd-v8.css">
-  <link rel="stylesheet" href="./assets/book-fluid-v9.css">
+  <link rel="stylesheet" href="./assets/viewer-clean-v11.css">
 </head>
 <body>
 <header class="top">
@@ -39,12 +36,12 @@
   <div id="viewerStage" class="magazine-stage hidden">
     <div class="magazine-heading">
       <span class="magazine-edition">EDICIÓN PRIVADA · CAREZZA CREACIONES</span>
-      <span class="magazine-hint"><span aria-hidden="true">↗</span> Arrastra una esquina para pasar la hoja</span>
+      <span class="magazine-hint"><span aria-hidden="true">↗</span> Arrastra una esquina o desliza para hojear</span>
     </div>
     <div class="magazine-desk" id="magazineDesk">
       <div class="book-ribbon" aria-hidden="true">♡</div>
       <div id="loadingBadge" class="carezza-load-badge hidden" role="status" aria-live="polite" aria-hidden="true">Preparando la siguiente página…</div>
-      <div id="book" class="premium-book" aria-label="Revista digital con páginas que se pasan"></div>
+      <div id="book" class="magazine-book" aria-label="Revista digital con páginas que se pasan"></div>
       <div id="fallbackPages" class="fallback-book hidden" aria-label="Páginas de la revista"></div>
     </div>
     <div class="magazine-toolbar">
@@ -80,6 +77,7 @@
   <p>Usa los controles + y − para revisar los detalles de impresión · Pulsa × para cerrar</p>
 </div>
 <footer class="footer">© Carezza Creaciones · Hecho con cariño para ti ♡</footer>
-<script src="./assets/viewer-flip-v10.js" defer></script>
+<script src="./assets/vendor/page-flip.browser.js" defer></script>
+<script src="./assets/viewer-clean-v11.js" defer></script>
 </body>
 </html>
