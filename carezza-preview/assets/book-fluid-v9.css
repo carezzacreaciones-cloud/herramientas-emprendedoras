@@ -1,0 +1,56 @@
+/* Carezza Preview · v9 · animación ligera y fluida con PNG originales intactos */
+.premium-book {
+  /* Una sombra CSS filter en el libro entero fuerza recomposición de todos
+     los PNG de alta resolución en cada frame; la sombra ya está en el escritorio. */
+  filter:none!important;
+  -webkit-filter:none!important;
+}
+.magazine-desk {
+  overflow:visible;
+}
+.carezza-page-image {
+  object-fit:contain;
+  image-rendering:auto;
+}
+.carezza-load-badge {
+  position:absolute;
+  z-index:12;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(255,253,255,.94);
+  color:#66547f;
+  border:1px solid #dbd1e7;
+  border-radius:999px;
+  padding:11px 18px;
+  box-shadow:0 8px 28px #41345020;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.35;
+  max-width:calc(100% - 40px);
+  pointer-events:none;
+}
+@media (max-width:760px) {
+  .magazine-stage {
+    overflow:visible;
+  }
+  .magazine-desk {
+    overflow:visible!important; /* no cortar la curvatura de la hoja */
+  }
+  .premium-book {
+    filter:none!important;
+    -webkit-filter:none!important;
+    isolation:auto;
+  }
+  .carezza-load-badge {
+    font-size:11px;
+    padding:9px 13px;
+    width:max-content;
+    max-width:90%;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .premium-book, .carezza-sheet {
+    filter:none!important;
+  }
+}
