@@ -289,6 +289,7 @@ async function initialize(){
     $('thumbnails').replaceChildren();
     $('thumbnails').classList.add('hidden');
     $('locked').classList.add('hidden');
+    syncLayout();
     $('viewerStage').classList.remove('hidden');
     const good=await Promise.all([0,...(total>1?[1]:[])].map(ensure));
     if(good.includes(false))throw Error('Las primeras páginas no pudieron cargarse. Revisa tu conexión.');
