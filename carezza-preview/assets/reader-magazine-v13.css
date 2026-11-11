@@ -1,0 +1,294 @@
+/* Carezza Preview — visor nativo responsive v12. No depende de StPageFlip. */
+.viewer-premium{max-width:1180px;margin:auto;padding:22px 14px 40px;text-align:center}
+.viewer-premium h1{font-size:clamp(23px,4vw,35px);overflow-wrap:anywhere;line-height:1.16;margin:5px 0 7px}
+.viewer-premium .intro{color:var(--muted);font-size:13px;line-height:1.5;margin:0 auto 19px}
+.magazine-stage{width:100%;max-width:1080px;margin:auto;padding:16px 20px;border-radius:22px;background:linear-gradient(137deg,#fff9f4,#f1eafa 58%,#fdf0e7);border:1px solid #e7dce8;box-shadow:0 18px 50px #77618a1a}
+.magazine-heading{display:flex;justify-content:space-between;gap:16px;align-items:center;margin:1px 5px 15px;text-align:left;color:#786591}
+.magazine-edition{font-size:11px;letter-spacing:1.4px;font-weight:800}
+.magazine-hint{font-size:11px}
+.magazine-desk{position:relative;display:flex;justify-content:center;align-items:center;padding:14px 10px;min-height:280px;border-radius:16px;background:radial-gradient(ellipse at 50% 16%,#fffefc,#e7dcec 88%);border:1px solid #e4d5e8;overflow:visible}
+.magazine-desk:after{content:"";position:absolute;left:18%;right:18%;bottom:10px;height:15px;filter:blur(13px);border-radius:50%;background:#58476430;pointer-events:none}
+.book-ribbon{position:absolute;left:15px;top:13px;color:#aa94b8;font-size:20px;font-family:Georgia,serif;pointer-events:none;z-index:1}
+.flipbook-shell{--paper-ratio:.714;position:relative;display:block;width:min(100%, 930px, calc(70svh * 1.428));aspect-ratio:1.428;min-width:0;margin:auto;perspective:1800px;transform-style:preserve-3d;isolation:isolate;user-select:none;-webkit-user-select:none;touch-action:pan-y;filter:none}
+.book-spread{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;overflow:visible;box-shadow:0 12px 25px #63506b24;background:#fff}
+.book-paper{position:relative;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+.book-paper.left{border-right:1px solid #e6deeb}
+.book-paper.right{border-left:1px solid #e9e3e9}
+.book-paper.empty{background:linear-gradient(100deg,#e8dce7 0%,#fcf8fb 38%,#fff 100%);}
+.book-paper img,.turning-leaf img{display:block;width:100%;height:100%;object-fit:contain;background:white;pointer-events:none;user-select:none;-webkit-user-drag:none;image-rendering:auto}
+.book-paper:not(.empty)::after{content:"";position:absolute;top:0;bottom:0;right:0;width:8%;pointer-events:none;background:linear-gradient(90deg,transparent,#51426715)}
+.book-paper.right:not(.empty)::after{left:0;right:auto;background:linear-gradient(90deg,#51426715,transparent)}
+.turning-leaf{position:absolute;top:0;bottom:0;width:50%;transform-style:preserve-3d;z-index:10;pointer-events:none;will-change:transform;transition:transform 760ms cubic-bezier(.30,.02,.23,1)}
+.turning-leaf.forward{left:50%;transform-origin:left center;transform:rotateY(0deg)}
+.turning-leaf.forward.flipped{transform:rotateY(-180deg)}
+.turning-leaf.backward{left:0;transform-origin:right center;transform:rotateY(0deg)}
+.turning-leaf.backward.flipped{transform:rotateY(180deg)}
+.leaf-front,.leaf-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff;overflow:hidden;box-shadow:0 0 3px #4a395f38}
+.leaf-back{transform:rotateY(180deg);box-shadow:0 0 3px #4a395f38}
+.leaf-front:after,.leaf-back:after{content:"";position:absolute;top:0;bottom:0;left:0;right:0;pointer-events:none;opacity:.8;background:linear-gradient(90deg,#33213d25,transparent 28%,transparent 68%,#47384f28)}
+.turning-leaf.flipped .leaf-front:after{opacity:.65}
+.turning-leaf.flipped .leaf-back:after{opacity:.85}
+.book-spine{position:absolute;z-index:4;top:0;bottom:0;left:calc(50% - 6px);width:12px;pointer-events:none;background:linear-gradient(to right,transparent,#4e3d5e1c,transparent)}
+.book-loading{position:absolute;z-index:18;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:99px;padding:10px 15px;max-width:85%;background:#fffefbea;color:#705d82;font-size:12px;font-weight:700;border:1px solid #e4d8e8;box-shadow:0 7px 20px #51435c22;pointer-events:none}
+.magazine-toolbar{display:flex;align-items:center;justify-content:space-between;gap:11px;max-width:570px;margin:16px auto 9px}
+.pageNav{border-radius:13px;min-width:115px}
+.page-center{flex:1;min-width:100px;display:flex;flex-direction:column;align-items:center;gap:9px}
+.page-center .counter{font-size:12px;font-weight:750;color:#6b5a7e;white-space:nowrap}
+#pageSlider{appearance:none;-webkit-appearance:none;width:100%;height:5px;border-radius:20px;background:linear-gradient(to right,#9480b1 var(--reading-progress,0%),#e5d9ee var(--reading-progress,0%));cursor:pointer}
+#pageSlider::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border:3px solid white;border-radius:50%;background:#74608e;box-shadow:0 1px 5px #4336513d}
+#pageSlider::-moz-range-thumb{width:10px;height:10px;border-radius:50%;background:#74608e;border:3px solid #fff}
+.magazine-actions{display:flex;align-items:center;justify-content:center;gap:9px;margin:14px auto;flex-wrap:wrap}
+.miniAction{font-size:12px;font-weight:700;border:1px solid #e1d6e8;color:#69577d;padding:10px 13px;border-radius:18px;background:#fffaf8;cursor:pointer}
+.miniAction:hover{background:#fff}
+.magazine-note,.warning{color:#81738a;font-size:11px;line-height:1.55;margin:15px auto 5px;max-width:670px}
+.thumbnails{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:9px;margin:13px auto;padding:12px;max-height:290px;overflow-y:auto;border-radius:14px;border:1px solid #e1d5e8;background:#fffd}
+.thumb{display:flex;flex-direction:column;gap:6px;padding:6px;background:#fff;border:1px solid #e7ddec;border-radius:9px;cursor:pointer}
+.thumb img{display:block;width:100%;aspect-ratio:.73;object-fit:contain}
+.thumb span{font-size:11px;color:#796c86}
+.thumb.is-current{outline:2px solid #b5a7cb}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.lock{margin:24px auto;max-width:430px;text-align:left}
+.fallback-book{width:min(100%,490px);height:clamp(330px,65vh,650px);display:flex;align-items:center;justify-content:center;background:white;margin:auto;box-shadow:0 8px 20px #6b58802c}
+.fallback-book img{max-width:100%;max-height:100%;object-fit:contain}
+.zoom-overlay{position:fixed;z-index:200;inset:0;background:#201929f2;display:flex;flex-direction:column;align-items:center;gap:8px;overflow:hidden;padding:55px 12px 12px}
+.zoom-close{position:fixed;right:16px;top:10px;width:40px;height:40px;border-radius:50%;border:1px solid #fff5;background:#fff2;color:white;font-size:30px;cursor:pointer}
+.zoom-tools{display:flex;align-items:center;gap:14px;flex-shrink:0;color:#fff}
+.zoom-tools button{border:1px solid #fff5;color:white;background:#fff2;border-radius:50%;font-size:23px;width:36px;height:36px}
+.zoom-tools button:disabled{opacity:.35}
+.zoom-tools output{min-width:60px;font-size:13px}
+.zoom-scroll{flex:1;min-height:0;width:100%;overflow:auto}
+.zoom-scroll img{display:block;max-width:none;max-height:none;width:auto;height:auto;margin:auto;box-shadow:0 12px 30px #0008}
+.zoom-overlay p{font-size:11px;color:white;margin:0;flex-shrink:0}
+body.zoom-open{overflow:hidden}
+#viewerStage:fullscreen{width:100%;max-width:none;overflow:auto;border-radius:0;display:flex;flex-direction:column;justify-content:center}
+#viewerStage:fullscreen .magazine-desk{flex:1}
+#viewerStage:fullscreen .flipbook-shell{max-height:76vh}
+@media(max-width:760px){
+ html,body{max-width:100%;overflow-x:hidden}
+ .topin{padding:11px 12px;gap:8px}
+ .brand{font-size:19px}.brand small{font-size:9px;letter-spacing:1.4px}
+ .topin>.small{font-size:10px;max-width:110px;text-align:right}
+ .viewer-premium{padding:13px 7px calc(22px + env(safe-area-inset-bottom));width:100%;max-width:100%}
+ .viewer-premium h1{font-size:clamp(21px,5.7vw,27px);line-height:1.13;margin:2px 5px 5px}
+ .viewer-premium .intro{font-size:12px;margin:0 5px 11px}
+ .viewer-premium .tag{font-size:10px;padding:5px 9px}
+ .magazine-stage{width:100%;max-width:100%;padding:9px 6px 12px;border-radius:14px}
+ .magazine-heading{display:none}
+ .magazine-desk{padding:10px 5px;min-height:0;overflow:visible}
+ .flipbook-shell{width:min(100%, 440px, calc(62svh * .714));aspect-ratio:.714;max-width:100%;touch-action:pan-y}
+ .book-spread{grid-template-columns:1fr}
+ .book-paper.left{display:none}
+ .book-paper.right{border:0}
+ .book-spine{display:none}
+ .turning-leaf{width:100%;transition-duration:680ms}
+ .turning-leaf.forward{left:0}
+ .turning-leaf.backward{left:0}
+ .magazine-toolbar{position:sticky;z-index:12;bottom:calc(5px + env(safe-area-inset-bottom));margin:9px 1px 5px;padding:7px 6px;gap:6px;background:#fffcf7f0;border:1px solid #e9dfe8;border-radius:14px;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);box-shadow:0 7px 20px #79628d21}
+ .pageNav{min-width:45px;flex:0 0 45px;height:43px;padding:4px;font-size:20px;border-radius:10px}
+ .pageNav span{display:none}
+ .page-center{min-width:80px;gap:8px}
+ .page-center .counter{font-size:11px}
+ .magazine-actions{display:flex;flex-wrap:nowrap;gap:6px;margin:12px auto 4px}
+ .miniAction{flex:1;min-width:0;padding:10px 4px;font-size:11px;border-radius:12px}
+ .miniAction span{white-space:normal}
+ .book-loading{padding:9px 12px;font-size:11px}
+ .thumbnails{grid-template-columns:repeat(3,minmax(0,1fr));max-height:45svh}
+ .warning,.magazine-note{font-size:10px;line-height:1.45}
+ .zoom-overlay{padding:calc(56px + env(safe-area-inset-top)) 8px calc(10px + env(safe-area-inset-bottom))}
+ .zoom-close{right:10px;top:calc(8px + env(safe-area-inset-top))}
+ .zoom-overlay p{font-size:10px}
+ .footer{font-size:10px;padding:14px}
+}
+@media(max-width:350px){.topin>.small{display:none}.miniAction{font-size:10px}.pageNav{min-width:40px;flex-basis:40px}}
+@media(prefers-reduced-motion:reduce){.turning-leaf{transition-duration:250ms}}
+@media print{.magazine-stage,.zoom-overlay{display:none!important}body:after{content:'Vista previa protegida · Carezza Creaciones';display:block;text-align:center}}
+
+
+/* ─── Carezza Magazine v13 · diseño mobile-first de página individual ─── */
+:root{--paper-ratio:.714;--spread-ratio:1.428}
+.flipbook-shell{
+  aspect-ratio:var(--spread-ratio);
+  width:min(100%,950px,calc(72svh * var(--spread-ratio)));
+  overflow:visible;
+}
+.book-spread{
+  box-shadow:0 18px 34px rgba(42,29,59,.22),0 1px 3px rgba(42,29,59,.2);
+}
+.book-paper img,.turning-leaf img{
+  object-fit:contain;
+  image-rendering:auto;
+}
+.turning-leaf{
+  filter:drop-shadow(0 6px 7px rgba(37,23,48,.20));
+  transform-style:preserve-3d;
+}
+.turning-leaf .leaf-front,
+.turning-leaf .leaf-back{
+  border:1px solid rgba(103,76,118,.08);
+  box-shadow:0 0 10px rgba(39,28,45,.12);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+}
+.turning-leaf .leaf-front:after{
+  background:linear-gradient(90deg,
+    rgba(25,16,37,.20) 0%,
+    rgba(255,255,255,.05) 18%,
+    transparent 44%,
+    rgba(45,30,54,.28) 95%,
+    rgba(28,15,42,.38) 100%);
+}
+.turning-leaf .leaf-back:after{
+  background:linear-gradient(90deg,
+    rgba(34,21,46,.34) 0%,rgba(61,41,75,.14) 22%,
+    rgba(255,255,255,.03) 50%,rgba(48,32,55,.10) 100%);
+}
+.paper-fold-edge{
+  position:absolute;z-index:15;right:0;top:0;bottom:0;width:7px;
+  background:linear-gradient(90deg,rgba(255,255,255,.24),rgba(80,57,85,.35),rgba(255,255,255,.86));
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+  pointer-events:none;
+}
+.turning-leaf.backward .paper-fold-edge{right:auto;left:0}
+.book-paper.empty{background:#fff}
+.book-paper:not(.empty)::after{opacity:.6}
+
+/* Una hoja grande y vertical, incluso al rotar teléfonos y en WhatsApp */
+body.single-reader .viewer-premium{
+  padding:13px 8px calc(24px + env(safe-area-inset-bottom));
+  max-width:100%;
+  width:100%;
+}
+body.single-reader .viewer-premium h1{
+  font-size:clamp(20px,5.5vw,27px);
+  line-height:1.16;
+  margin:1px 5px 4px;
+}
+body.single-reader .viewer-premium .intro{
+  font-size:11px;
+  margin:0 5px 10px;
+  line-height:1.35;
+}
+body.single-reader .viewer-premium>.tag{
+  font-size:9px;
+  margin-bottom:6px;
+  padding:4px 10px;
+}
+body.single-reader .magazine-stage{
+  width:100%;max-width:100%;margin:auto;
+  border:0;box-shadow:none;background:transparent;
+  padding:2px 2px 10px;
+}
+body.single-reader .magazine-heading{display:none}
+body.single-reader .magazine-desk{
+  margin:auto;min-height:0;
+  padding:7px 6px 12px;
+  border:0;border-radius:12px;
+  background:transparent;
+  box-shadow:none;
+  overflow:visible;
+}
+body.single-reader .magazine-desk::after{
+  left:14%;right:14%;height:17px;bottom:0;background:#51435c2f;
+}
+body.single-reader .book-ribbon{display:none}
+body.single-reader .flipbook-shell{
+  width:min(calc(100vw - 32px), 530px, calc(69svh * var(--paper-ratio)));
+  min-width:0;
+  max-width:100%;
+  aspect-ratio:var(--paper-ratio);
+  height:auto;
+  margin:0 auto;
+  -webkit-user-select:none;
+  user-select:none;
+  touch-action:pan-y;
+  isolation:isolate;
+  box-shadow:0 18px 35px rgba(44,30,53,.12);
+}
+body.single-reader .flipbook-shell:before{
+  content:"";position:absolute;top:5px;right:-4px;bottom:-5px;left:4px;
+  background:linear-gradient(90deg,#ded5df,#fffafc 30%,#e3d8e5 96%,#cbbfd0);
+  border:1px solid rgba(99,76,110,.18);
+  box-shadow:1px 5px 10px rgba(30,20,40,.12);
+  z-index:-1;
+  pointer-events:none;
+}
+body.single-reader .book-spread{
+  display:block;
+  background:white;
+  border:1px solid rgba(114,94,126,.18);
+  box-shadow:0 3px 11px rgba(63,44,70,.17);
+}
+body.single-reader .book-paper.left{display:none!important}
+body.single-reader .book-paper.right{
+  position:absolute;inset:0;width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  border:0!important;
+  background:#fff;
+}
+body.single-reader .book-paper.right:after{
+  width:12px;left:auto;right:0;
+  background:linear-gradient(to right,transparent,rgba(35,24,39,.08));
+}
+body.single-reader .book-paper img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain}
+body.single-reader .book-spine{display:none!important}
+body.single-reader .turning-leaf{
+  width:100%!important;
+  left:0!important;
+  top:0;bottom:0;
+  filter:none;
+  transform-style:preserve-3d;
+  transition-duration:710ms;
+}
+body.single-reader .turning-leaf.forward{transform-origin:left center}
+body.single-reader .turning-leaf.backward{transform-origin:right center}
+body.single-reader .pageNav{
+  min-width:43px;flex:0 0 43px;height:43px;
+  padding:5px;border-radius:13px;font-size:20px;
+}
+body.single-reader .pageNav span{display:none}
+body.single-reader .magazine-toolbar{
+  max-width:min(520px,100%);
+  position:sticky;bottom:calc(5px + env(safe-area-inset-bottom));
+  z-index:20;
+  padding:9px 10px;
+  gap:8px;
+  margin:11px auto 6px;
+  background:rgba(255,253,250,.97);
+  border:1px solid rgba(195,175,206,.55);
+  border-radius:17px;
+  box-shadow:0 7px 22px rgba(69,50,88,.15);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+}
+body.single-reader .page-center{min-width:0;gap:7px}
+body.single-reader .page-center .counter{font-size:12px}
+body.single-reader #pageSlider{height:5px;width:100%}
+body.single-reader .magazine-actions{
+  max-width:520px;display:flex;gap:7px;
+  justify-content:space-evenly;flex-wrap:nowrap;
+  margin:12px auto 6px;
+}
+body.single-reader .miniAction{
+  font-size:11px;min-width:0;flex:1;
+  border-radius:13px;padding:10px 5px;line-height:1.2;
+}
+body.single-reader .miniAction span{white-space:normal}
+body.single-reader .magazine-note{font-size:10px;line-height:1.45;margin:9px auto}
+body.single-reader .warning{font-size:10px;line-height:1.4;margin:10px auto}
+body.single-reader .thumbnails{grid-template-columns:repeat(3,minmax(0,1fr))}
+body.single-reader .footer{padding:12px;font-size:10px}
+@media(orientation:landscape) and (max-height:520px){
+  body.single-reader .viewer-premium>.tag,
+  body.single-reader .viewer-premium>.intro{display:none}
+  body.single-reader .viewer-premium h1{font-size:16px;margin:0 4px 5px}
+  body.single-reader .flipbook-shell{
+    width:min(calc(100vw - 58px),calc(59svh * var(--paper-ratio)));
+  }
+  body.single-reader .magazine-toolbar{position:relative;margin:5px auto 3px;padding:5px 8px}
+  body.single-reader .magazine-actions{margin:6px auto}
+  body.single-reader .miniAction{padding:7px 4px}
+}
+@media(prefers-reduced-motion:reduce){
+  .turning-leaf{transition-duration:300ms!important}
+}
