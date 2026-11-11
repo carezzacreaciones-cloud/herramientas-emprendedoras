@@ -193,6 +193,7 @@ function gestureStart(e){
   if(busy||locked||!total||!$('zoomOverlay').classList.contains('hidden'))return;
   if(e.pointerType==='mouse'&&e.button!==0)return;
   gesture={id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),dir:0,next:null,progress:0,leaf:null,active:false};
+  try{$('book').setPointerCapture?.(e.pointerId);}catch(_){}
 }
 function gestureMove(e){
   const g=gesture;if(!g||g.id!==e.pointerId||busy)return;
@@ -213,6 +214,7 @@ function gestureMove(e){
 async function gestureEnd(e,canceled=false){
   const g=gesture;if(!g||g.id!==e.pointerId)return;
   gesture=null;
+  try{$('book').releasePointerCapture?.(e.pointerId);}catch(_){}
   if(!g.active){
     if(canceled)return;
     const box=$('book').getBoundingClientRect(),x=(e.clientX-box.left)/box.width;
