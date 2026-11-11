@@ -9,7 +9,7 @@
 .magazine-desk{position:relative;display:flex;justify-content:center;align-items:center;padding:14px 10px;min-height:280px;border-radius:16px;background:radial-gradient(ellipse at 50% 16%,#fffefc,#e7dcec 88%);border:1px solid #e4d5e8;overflow:visible}
 .magazine-desk:after{content:"";position:absolute;left:18%;right:18%;bottom:10px;height:15px;filter:blur(13px);border-radius:50%;background:#58476430;pointer-events:none}
 .book-ribbon{position:absolute;left:15px;top:13px;color:#aa94b8;font-size:20px;font-family:Georgia,serif;pointer-events:none;z-index:1}
-.flipbook-shell{--paper-ratio:.714;position:relative;display:block;width:min(100%, 930px, calc(70svh * 1.428));aspect-ratio:1.428;min-width:0;margin:auto;perspective:1800px;transform-style:preserve-3d;isolation:isolate;user-select:none;-webkit-user-select:none;touch-action:pan-y;filter:none}
+.flipbook-shell{position:relative;display:block;width:min(100%, 930px, calc(70svh * 1.428));aspect-ratio:1.428;min-width:0;margin:auto;perspective:1800px;transform-style:preserve-3d;isolation:isolate;user-select:none;-webkit-user-select:none;touch-action:pan-y;filter:none}
 .book-spread{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;overflow:visible;box-shadow:0 12px 25px #63506b24;background:#fff}
 .book-paper{position:relative;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
 .book-paper.left{border-right:1px solid #e6deeb}
